@@ -61,6 +61,14 @@ ul.navigationChild{
     list-style-type: none;
 }
 
+ul.childlist{
+  margin-left: -25px;
+}
+
+ul.mainmenu{
+  margin-left: -40px;
+}
+
 .navigation A {
   color:#000000;
   text-decoration:none;
@@ -85,4 +93,4 @@ input.new{
 input.new[type="submit"]:hover{
    color: red;
     background: #F6F9ED;
-} 
+}

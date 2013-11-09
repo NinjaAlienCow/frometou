@@ -19,6 +19,12 @@ class doc {
 
     function show($key, $category="baseData") {
         echo (isset($this->data[$category]) && isset($this->data[$category][$key])) ? $this->data[$category][$key]  : "";
+        //$pagetitle = str_replace('"', '&quot;', $pagetitle);
+
+    }
+
+    function replaceQuotes($data){
+        return str_replace('"', '&quot;', $data);
     }
 
     function load($did) {
@@ -50,14 +56,17 @@ class doc {
         }
     }
 
+
     function save($post, $lang) {
         //first update the general properties:
-        $query = "UPDATE doc SET priority = ".$post['priority'].", ident=\"".$post['ident']."\", description_img=\"".$post['description_img']."\" WHERE did='".$this->get("did")."'";
+        $query = "UPDATE doc SET priority = ".$post['priority'].", ident=\"".$this->replaceQuotes($post['ident'])."\", description_img=\"".$post['description_img']."\" WHERE did='".$this->get("did")."'";
+
         //echo $query;
         mysql_query($query);
+        $pagetitle = $post['pagetitle'];
         //update translation specific general properties
-        $query = "REPLACE doc_general_v ( did, langid, linktext, pagetitle, description ) VALUES ( ".$post['did'].", '".$lang."', \"".$post['linktext']."\", \"".$post['pagetitle']."\", \"".$post['description']."\")"; 
-        //echo $query."<br />";        
+        $query = "REPLACE doc_general_v ( did, langid, linktext, pagetitle, description ) VALUES ( ".$post['did'].", '".$lang."', \"".$this->replaceQuotes($post['linktext'])."\", \"". $this->replaceQuotes($post['pagetitle'])."\", \"".$post['description']."\")"; 
+        //echo $query."<br />";
         mysql_query($query);
         foreach($this->data['modules'] as $n=>$o) {
             $o->save($post, $lang);
@@ -133,12 +142,12 @@ class doc {
             <TR>
                 <TH>page title:</TH>
                 <TD>
-                    <input size="50" name="pagetitle" value="<?php $this->show("pagetitle"); ?>">
+                    <input size="50" name="pagetitle" value="<?php $this->show('pagetitle'); ?>">
                 </TD>
             </tr>
             <tr>
                 <TH>linktext:</TH>
-                <TD><input size="50" name="linktext" value="<?php $this->show("linktext"); ?>"></TD>
+                <TD><input size="50" name="linktext" value="<?php $this->show('linktext'); ?>"></TD>
             </tr>
             <tr>
                 <TH>description: </TH>

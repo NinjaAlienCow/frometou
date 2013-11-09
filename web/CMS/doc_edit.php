@@ -10,7 +10,7 @@ if (isset($_GET['lang'])) {
     $_SESSION['lang'] = $_GET['lang'];
 }
 
-//If we changed document, load it
+//If we changed document, load it   
 if (isset($_GET['did']) || isset($_GET['did'])) {
     $_SESSION['did'] = isset($_GET['did']) ? $_GET['did'] : $_POST['did'];
     $did = $_SESSION['did'];
@@ -70,7 +70,7 @@ function showhide(id) {
 	<TABLE class="maintable" BORDER='0' WIDTH='100%'>
 		<TR>
 			<TD><H1>Edit/add Documents</H1></TD>
-			<td><a href='delete.php'><b>Delete this Document</b></a></h1></td>
+			<td><a href='doc_delete.php'><b>Delete this Document</b></a></h1></td>
 			<TD ALIGN='right'>
 			<?php
 				cms_insert_flags('did', $doc->did);
@@ -90,6 +90,10 @@ if (isset($_GET['new'])){
         <A HREF="#" onClick="showhide('documentInfoSub'); showhide('cke_bodyEdit'); return false;">
             Document properties <font id="documentInfoSubPlus" style="display:none;">+</font>
         </A></B></LEGEND>
+        <!-- 
+        printEditArea is the main area for editing text etc. 
+        it can be found in web\CMS\system\doc.php, and web\CMS\system\doc.php:
+    -->
         <?php $doc->printEditArea(); ?>
     </FIELDSET>
     </form>

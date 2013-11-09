@@ -1,6 +1,8 @@
 <?php
+require_once("system/authorize.php");
 require_once("functions/cms_general.php");
 require_once("functions/parsing.php");
+
 
 $doc = unserialize($_SESSION['doc']);
 $modules = unserialize($_SESSION['modules']);

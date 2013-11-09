@@ -19,7 +19,7 @@ function leftMenu() {
 
 	//checking if SESSION
 	function getCheck($getDid){
-		$query = "SELECT * FROM mainmenu WHERE did = '$getDid'";
+		$query = "SELECT * FROM hierarchy WHERE did = '$getDid' AND hierarchy.parent IS NULL";
 		$result = mysql_query($query);
 		$row = mysql_fetch_assoc($result);
 		if (isset($row['did'])) {
@@ -46,7 +46,7 @@ function leftMenu() {
 	}
 
 	//Printing menu wih parents and childs
-	$query = "SELECT mainmenu.did, doc_general_v.did, doc_general_v.linktext FROM mainmenu, doc_general_v WHERE mainmenu.did = doc_general_v.did AND langid = '".$_SESSION['lang']."'";
+	$query = "SELECT hierarchy.did, doc_general_v.did, doc_general_v.linktext FROM hierarchy, doc_general_v WHERE hierarchy.did = doc_general_v.did AND hierarchy.parent IS NULL AND langid = '".$_SESSION['lang']."'";
 	$result = mysql_query($query);
 	$prevRow;
 	$link = null;

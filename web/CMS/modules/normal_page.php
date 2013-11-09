@@ -21,6 +21,10 @@ class normal_page {
         return (isset($this->props[$key])) ? $this->props[$key] : "";
     }
 
+    function replaceQuotes($data){
+        return str_replace('"', '&quot;', $data);
+    }
+
     function printEditArea() {
         ?>
         <table>
@@ -56,8 +60,8 @@ class normal_page {
 
     function save($post, $lang) {
         $did = $post['did'];
-        $this->single_save($lang, $did, "normal_page_header", $post["normal_page_header"]);
-        $this->single_save($lang, $did, "normal_page_post_header", $post["normal_page_post_header"]);
+        $this->single_save($lang, $did, "normal_page_header", $this->replaceQuotes($post["normal_page_header"]));
+        $this->single_save($lang, $did, "normal_page_post_header", $this->replaceQuotes($post["normal_page_post_header"]));
         $body = fix_html_field($post["normal_page_body_content"]);
         $this->single_save($lang, $did, "normal_page_body_content", $body);
     }
