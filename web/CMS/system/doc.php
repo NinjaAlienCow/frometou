@@ -39,6 +39,8 @@ class doc {
             "FROM doc, module ".
             "WHERE doc.module_signature = module.module_signature AND doc.did=".$did);
          //load module:
+        echo "te-t";
+        echo $this->get("cms_path");
         require_once($this->get("cms_path"));
         $module_sig = $this->get("module_signature");
         $module = new $module_sig;
@@ -91,7 +93,7 @@ class doc {
         //also delete module entry:
         foreach($this->data['modules'] as $n=>$o) {
             $o->deleteLang($langid);
-        }       
+        }
     }
 
     function printEditArea() {

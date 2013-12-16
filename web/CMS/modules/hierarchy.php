@@ -32,17 +32,13 @@ if (!class_exists('hierarchy')) {
 
 			//adding child to database
 			if(isset($_POST["possibleChildren"])){
-				print_r($_POST["possibleChildren"]);
 				$sql = "INSERT INTO hierarchy SET did = '".$_POST['possibleChildren']."', parent = '$this->did'";
-				echo $sql;
 				mysql_query($sql);
 			}
 
 			//adding parent to database
 			if(isset($_POST["possibleParents"])){
-				print_r($_POST["possibleParents"]);
 				$sql = "INSERT INTO hierarchy SET parent = '".$_POST['possibleParents']."', did = '$this->did'";
-				echo "<br>".$sql."<br>";
 				mysql_query($sql);
 			}
 

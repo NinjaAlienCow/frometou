@@ -5,5 +5,3 @@ INSERT INTO module ( mid, module_signature, module_name, display_path, cms_path)
 INSERT INTO module_props (prop_id, module_signature, signature, property_name, input_type, shown, priority) VALUES (NULL, 'normal_page', 'header', 'Header', 'text', '1', '300');
 INSERT INTO module_props (prop_id, module_signature, signature, property_name, input_type, shown, priority) VALUES (NULL, 'normal_page', 'post_header', 'Post Header', 'text', '1', '200');
 INSERT INTO module_props (prop_id, module_signature, signature, property_name, input_type, shown, priority) VALUES (NULL, 'normal_page', 'body', 'Body', 'html', '1', '100');
-
-

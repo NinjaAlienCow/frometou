@@ -4,6 +4,7 @@ require_once($SITE_INFO_LOCAL_ROOT."functions/security.php");
 require_once($SITE_INFO_LOCAL_ROOT."/CMS/system/doc.php");
 
 require_once($SITE_INFO_LOCAL_ROOT."/CMS/modules/normal_page.php");
+require_once($SITE_INFO_LOCAL_ROOT."/CMS/modules/filepage.php");
 require_once($SITE_INFO_LOCAL_ROOT."/CMS/modules/hierarchy.php");
 require_once($SITE_INFO_LOCAL_ROOT."/CMS/modules/mainmenu.php");
 

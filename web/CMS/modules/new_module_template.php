@@ -24,6 +24,8 @@ class new_module {
         //}
     }
     
+
+    //returns the value of the object properties, in this case $props=[], 
     function get($key) {
         return (isset($this->props[$key])) ? $this->props[$key] : "";
     }

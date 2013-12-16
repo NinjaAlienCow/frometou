@@ -5,15 +5,15 @@ require_once("functions/cms_general.php");
 /* if user decided to create a new document */
 if (isset($_POST['new'])) {
 	//adding defaults
-	$module_signature = "normal_page";
+	$module_signature = $_POST['signature'];
 
 	//create a stub for the new document (the non-language specific)
 	$query = "INSERT INTO doc (did, module_signature, description_img, ident, priority) VALUES ";
-	$query .= "( '', '".$module_signature."', '', 'new document', '100')";
+	$query .= "( '', '".$module_signature."', '', 'new ".$module_signature."', '100')";
 	mysql_query($query);
 
 	//get new id:
-	$mysql = "SELECT did FROM doc WHERE module_signature='$module_signature' AND ident='new document' AND priority='100' ORDER BY did DESC LIMIT 1";
+	$mysql = "SELECT did FROM doc WHERE module_signature='$module_signature' AND ident='new ".$module_signature."' AND priority='100' ORDER BY did DESC LIMIT 1";
 	$row = mysql_fetch_row(mysql_query($mysql));
 	$newID = $row[0];
 
@@ -28,7 +28,20 @@ if (isset($_GET['newPage'])) {
 	echo $_GET['newPage'];
 }
 
+
+	$query = "SELECT * FROM module WHERE module_type='page' AND enabled=1";
+	$res = mysql_query($query);
+	while ($row = mysql_fetch_assoc($res)) {
+		echo "<FORM method='POST' NAME='newDoc' target='_self'>\n";
+			echo "<INPUT class='new' TYPE='submit' value='+ new ".$row['module_name']."' name='new'><br>\n";
+			echo "<INPUT TYPE='hidden' value='".$row['module_signature']."' name='signature'><br>\n";
+		echo "</FORM>\n";
+
+	}
+echo $_POST['signature'];
+print_r($_POST);
+
 ?>
-	<FORM method="POST" NAME="newDoc" target="_self">
-		<INPUT class="new" TYPE="submit" value="+ new document" name="new">
-	</FORM>
+
+
+	

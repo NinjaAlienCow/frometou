@@ -29,7 +29,7 @@ if (isset($_POST['DeleteAll'])) {
 }
 
 //listing all languages version of the given document  
-$mysql = "SELECT langid, did FROM doc_module_v WHERE prop_signature = 'normal_page_header' AND did = '".$doc->did."' ORDER BY did DESC";
+$mysql = "SELECT langid, did FROM doc_general_v WHERE did = '".$doc->did."' ORDER BY did DESC";
 $result = mysql_query($mysql);
 //only allow deleting individual document versions if we have more than 1 translation
 if (mysql_num_rows($result) > 1) {
@@ -45,5 +45,6 @@ if (mysql_num_rows($result) > 1) {
 		}
 	}
 }
+
 ?>
 </form>

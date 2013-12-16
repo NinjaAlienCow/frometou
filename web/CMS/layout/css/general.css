@@ -10,14 +10,11 @@ font, a, label, button, select, option, input, th, td, textarea
 
 }
 
-
-
 body { 
     background-color:#F6F9ED;
     font-size:11px;
     font-family:verdana; 
 }
-
 
 A {
   color:#000000;

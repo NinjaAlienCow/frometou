@@ -112,9 +112,8 @@ function ListDocs($did){
 
 // Save data in 2 seperate arrays, 1 for files showen on page
 	echo "<b>shown in menu: </b><br>" . $inUse;	
-	echo "<br><br><b>Not shown in use: </b><br>".$notInUse;
-	echo "<br><br>haha<br>";
-	echo $_SESSION['did'];
+	echo "<br><br><b>Not shown in mainmenu: </b><br>".$notInUse;
+	echo "<br><br>";
 }
 
 ?>

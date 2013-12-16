@@ -33,8 +33,8 @@ $SITE_INFO_MODULES_ENABLED = [
 	"normal_page",
 	// "subscription", // function(name,street,city) - subscribe members of a group
 	"hierarchy",
-	"mainmenu"
-	// "navigator"
+	"mainmenu",
+	"filepage"
 ];
 
 $SITE_INFO_MODULE_SETTINGS["normal_page"] = [1, 0, 0, 0, 0]; 
