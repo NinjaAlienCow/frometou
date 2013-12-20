@@ -39,8 +39,6 @@ class doc {
             "FROM doc, module ".
             "WHERE doc.module_signature = module.module_signature AND doc.did=".$did);
          //load module:
-        echo "te-t";
-        echo $this->get("cms_path");
         require_once($this->get("cms_path"));
         $module_sig = $this->get("module_signature");
         $module = new $module_sig;
@@ -132,19 +130,19 @@ class doc {
                 </TD>
             </tr>
             <tr>
-                <th>identifier: </th>
+                <th title='identifier: the name wich will be showen in the administration menu'>identifier: </th>
                 <td>
-                    <input TYPE='text' size="50" name="ident" value="<?php $this->show('ident'); ?>">
+                    <input TYPE='text' title='identifier: the name wich will be showen in the administration menu' size="50" title="" name="ident" value="<?php $this->show('ident'); ?>">
                 </td>
             </tr>
             <tr>
-                   <th STYLE="width:0; text-align:right;">priority: </th>
-                   <td WIDTH=100%><input TYPE='text' size="3" name="priority" value="<?php $this->show('priority'); ?>"></td>
+                   <th STYLE="width:0; text-align:right;" title='priority: the higher priority-number, the higher the file will be located on the menu'>priority: </th>
+                   <td WIDTH=100%><input TYPE='text' title='priority: the higher priority-number, the higher the file will be located on the menu' size="3" name="priority" value="<?php $this->show('priority'); ?>"></td>
             </tr>
             <TR>
-                <TH>page title:</TH>
+                <TH title="Pagetitle contains the name, wich is showen in mainmenu ">page title:</TH>
                 <TD>
-                    <input size="50" name="pagetitle" value="<?php $this->show('pagetitle'); ?>">
+                    <input size="50" title="Pagetitle contains the name, wich is showen in mainmenu " name="pagetitle" value="<?php $this->show('pagetitle'); ?>">
                 </TD>
             </tr>
             <tr>

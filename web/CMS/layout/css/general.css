@@ -32,14 +32,114 @@ th {
 
 /* ------------------ Edit Page ---------------- */
 
-table.maintable{
-  margin-top: 20px;
+.topMaintitle{
+  margin-left: 10px;
+  font-size: 27px;
 }
 
-h1.maintable{
+.topDeleteLink{
+  font-weight: bold;
+}
+
+.topLanguage{
+  /*background-color: red;*/ 
+  vertical-align:bottom;
+}
+
+table.topMaintable{
+  /*margin-top: 20px;*/
+  height: 100px;
+  background-color:white; 
+}
+
+h1.topMaintable{
   font-size: 50px;
 }
+
+.topHR { 
+width: 100%; 
+height: 1px; 
+border: 0; 
+background-color: black; 
+margin-top: -1px; 
+} 
+
+.activeflags{
+  height: 50px;
+ /* background-color:red;*/
+}
+
+.genFlagDiv{
+  float: left;
+  display: inline;
+  position: relative;
+  top: 26px;
+  margin-left:10px;
+  width: 50px;
+  height: 23px;
+  background-image:url('http://localhost/frometou/web/layout/imgs/genflag.png');
+}
+
+.genflag_active{
+    position: relative;
+    top: 4px;
+    left:13px;
+    opacity:0.4;
+}
+
+.genflag_inactive{
+    position: relative;
+    top: 4px;
+    left:20px;
+    opacity:0.4;
+}
+
+.newLanguage{
+  color: green;
+  font-size: 20px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 3;
+  width: 12px;
+  height: 12px;
+  }
+
+
+.selectedflagdiv{
+  float: left;
+  text-align: center;
+  height: 50px;
+  width: 136px;
+  margin-left:10px;
+  background-image:url('http://localhost/frometou/web/layout/imgs/selectedflagsmall.png');
+  position: relative;
+  z-index: 2;
+}
+
+
+.selectedflag{
+    border-width: 1px;
+    position: relative;
+    z-index: 2;
+    top: 20px;
+    left:0px;  
+  }
+/*document (the lover part of the edit page)*/
+
+.documentuk{
+  background-color: #f3f7ff;
+}
+.documentdk{
+  background-color: #fff3f3;
+}
+
+.document{
+  margin: 10px;
+}
+
 /* -------------- Navigation window -------------- */
+
 body.navigation {
     background-color:#FFFFFF;
     font-size:11px;

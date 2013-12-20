@@ -33,13 +33,11 @@ if (isset($_GET['newPage'])) {
 	$res = mysql_query($query);
 	while ($row = mysql_fetch_assoc($res)) {
 		echo "<FORM method='POST' NAME='newDoc' target='_self'>\n";
-			echo "<INPUT class='new' TYPE='submit' value='+ new ".$row['module_name']."' name='new'><br>\n";
+			echo "<INPUT class='new' TYPE='submit' value='+ new ".$row['module_name']."' name='new'>\n";
 			echo "<INPUT TYPE='hidden' value='".$row['module_signature']."' name='signature'><br>\n";
 		echo "</FORM>\n";
 
 	}
-echo $_POST['signature'];
-print_r($_POST);
 
 ?>
 

@@ -11,6 +11,6 @@ require_once("system/authorize.php");
 </head>
 <frameset border="1px"  cols="300, *">
 	<frame name="navigation" src="navigator.php" border="0" marginheight="0" marginwidth="8px">
-	<frame name="main" src="doc_edit.php" border="0" marginheight="0" marginwidth="10px">
+	<frame name="main" src="doc_edit.php" border="0" marginheight="0" marginwidth="0px">
 </frameset>
 </html>

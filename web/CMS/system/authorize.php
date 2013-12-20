@@ -3,10 +3,6 @@ require_once(dirname(__FILE__)."/../../functions/system/siteInfo.php");
 require_once($SITE_INFO_LOCAL_ROOT."functions/security.php");
 require_once($SITE_INFO_LOCAL_ROOT."/CMS/system/doc.php");
 
-require_once($SITE_INFO_LOCAL_ROOT."/CMS/modules/normal_page.php");
-require_once($SITE_INFO_LOCAL_ROOT."/CMS/modules/filepage.php");
-require_once($SITE_INFO_LOCAL_ROOT."/CMS/modules/hierarchy.php");
-require_once($SITE_INFO_LOCAL_ROOT."/CMS/modules/mainmenu.php");
 
 session_start(); // Starts the session
 
@@ -34,11 +30,10 @@ if (!($_SESSION['uname'] == "$SITE_INFO_CMS_UNAME" && $_SESSION['pass'] == "$SIT
 	foreach ($SITE_INFO_MODULES_ENABLED as $mod) {
 	    //ensure module is initialized
 	    require_once("{$SITE_INFO_LOCAL_ROOT}CMS/modules/{$mod}_init.php");
-
+		require_once($SITE_INFO_LOCAL_ROOT."/CMS/modules/{$mod}.php");
 	    $sql = "UPDATE module SET enabled=1 WHERE module_signature='$mod'";
 	    //echo $sql."<br/>";
 	    mysql_query($sql);
 	}
-
 }
 ?>
