@@ -29,12 +29,12 @@ class normal_page {
         ?>
         <table>
             <tr>
-                <th>header:</th>
-                <td><input size='50' name='normal_page_header' value="<?php echo $this->get('normal_page_header'); ?>"></td>
+                <th title="header will be the maintitle showen on you page">header:</th>
+                <td><input title="header will be the maintitle showen on you page" size='50' name='normal_page_header' value="<?php echo $this->get('normal_page_header'); ?>"></td>
             </tr>
             <tr>
-            	<th>post header:</th>
-            	<td><input size='50' name='normal_page_post_header' value="<?php echo $this->get('normal_page_post_header'); ?>"></td>
+            	<th title="Post header is the sub title showen on you page under the main header">post header:</th>
+            	<td><input size='50' title="Post header is the sub title showen on you page under the main header" name='normal_page_post_header' value="<?php echo $this->get('normal_page_post_header'); ?>"></td>
             </tr>
         	<tr>
         		<th>Body:</th>

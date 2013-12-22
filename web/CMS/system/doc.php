@@ -94,12 +94,78 @@ class doc {
         }
     }
 
+    //giver mulighed for at sammenligne sprog på kryds af sprog.
+    function printLangComparison($lang){
+        global $SITE_INFO_PUBLIC_ROOT;
+//        echo "SELECT * FROM doc_general_v WHERE langid = '".$lang."' AND did = ".$this->get('did');
+        $res = mysql_query("SELECT * FROM doc_general_v WHERE langid = '".$lang."' AND did = ".$this->get('did') );
+        $row = mysql_fetch_assoc($res);
+        echo $row['linktext'];
+        ?>
+
+        <div style="border:1px solid black;">
+        <TABLE BORDER=0 id="standardInfo" WIDTH=300>
+            <tr>
+                <th>Public Url:</th>
+                <th>
+                    <?php
+                    $url = $SITE_INFO_PUBLIC_ROOT.$lang."/page".$this->get('did');
+                    echo "<a href=\"$url\">$url</a>";
+                    ?>
+                </th>
+            </tr>
+            <tr>
+                <th title='identifier: the name wich will be showen in the administration menu'>identifier: </th>
+                <td>
+                    <?php echo $this->show('ident'); ?>
+                </td>
+            </tr>
+            <tr>
+               <th title='priority: the higher priority-number, the higher the file will be located on the menu'>priority: </th>
+               <td><?php $this->show('priority'); ?></td>
+            </tr>
+            <TR>
+                <TH>page title:</TH>
+                <TD>
+                    <?php echo $row['pagetitle']; ?>
+                </TD>
+            </tr>
+            <tr>
+                <TH title="linktext contains the name, which is shown in mainmenu">linktext:</TH>
+                <TD><?php echo $row['linktext']; ?></TD>
+            </tr>
+            <tr>
+                <TH title="This has a function, what the function is, is still a great question for me, since i have no idea">description: </TH>
+                <TD>
+                    <?php $this->show("description"); ?>
+                </TD>
+            </tr>
+            <?php
+            //print module
+            $sql = "SELECT * FROM doc_module_v LEFT JOIN module_props ON module_props.signature = doc_module_v.prop_signature WHERE langid = '".$lang."' AND did = ".$this->get('did')." ORDER BY property_name DESC";
+            $res = mysql_query($sql);
+            while ($row = mysql_fetch_assoc($res)){
+            echo "<tr><th valign='top'>";
+                echo $row['property_name'];
+                echo "</th><td>";
+                echo $row['value'];
+            echo "</td><tr>";
+
+            }
+            ?>
+            </table>
+        </div>
+
+            <?php
+    }
+
+
     function printEditArea() {
         global $SITE_INFO_PUBLIC_ROOT;
         ?>
         <input type='hidden' name="did" value="<?php $this->show('did'); ?>">
                 <TD WIDTH=0><INPUT TYPE="submit" value="&nbsp;save changes &nbsp;" name="saveDoc"></TD><br><br>
-        <TABLE BORDER=0 id="standardInfo" WIDTH=100%>
+        <TABLE BORDER=0 id="standardInfo" WIDTH=620px>
             <tr>
                 <th>Public Url:</th>
                 <th>
@@ -140,17 +206,17 @@ class doc {
                    <td WIDTH=100%><input TYPE='text' title='priority: the higher priority-number, the higher the file will be located on the menu' size="3" name="priority" value="<?php $this->show('priority'); ?>"></td>
             </tr>
             <TR>
-                <TH title="Pagetitle contains the name, wich is showen in mainmenu ">page title:</TH>
+                <TH>page title:</TH>
                 <TD>
-                    <input size="50" title="Pagetitle contains the name, wich is showen in mainmenu " name="pagetitle" value="<?php $this->show('pagetitle'); ?>">
+                    <input size="50" name="pagetitle" value="<?php $this->show('pagetitle'); ?>">
                 </TD>
             </tr>
             <tr>
-                <TH>linktext:</TH>
-                <TD><input size="50" name="linktext" value="<?php $this->show('linktext'); ?>"></TD>
+                <TH title="linktext contains the name, which is shown in mainmenu">linktext:</TH>
+                <TD><input size="50" title="linktext contains the name, which is shown in mainmenu" name="linktext" value="<?php $this->show('linktext'); ?>"></TD>
             </tr>
             <tr>
-                <TH>description: </TH>
+                <TH title="This has a function, what the function is, is still a great question for me, since i have no idea">description: </TH>
                 <TD>
                     <TEXTAREA COLS=50 ROWS=3 NAME='description'><?php $this->show("description"); ?></TEXTAREA>
                 </TD>

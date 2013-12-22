@@ -70,9 +70,11 @@ function showhide(id) {
 	<BODY class='document<?php echo $_SESSION['lang'];?>'>
 	<TABLE class='topMaintable' WIDTH='100%' BORDER='0' cellspacing='0' cellpadding='0'>
 		<TR>
-			<TD>
+			<TD width="400">
                 <p class='topMaintitle'>Edit/add Documents</p>
-                <p class='topDeleteLink'><a href='doc_delete.php'> - Delete this Document</a>
+                <p class='topDeleteLink'><a href='doc_delete.php'> - Delete this Document</a></p>
+                <p class='topCompareLink'>- compare this page with other versions</p>
+
             </TD>
 			<TD ></p></TD>
 			<TD class='topLanguage'>
@@ -83,8 +85,7 @@ function showhide(id) {
 
 			</TD>
 		</TR>
-</div>
-
+        </div>
 	</TABLE>
 <div class="topHR"></div>
 <?php
@@ -100,10 +101,15 @@ if (isset($_GET['new'])){
                 Document properties <font id="documentInfoSubPlus" style="display:none;">+</font>
             </A></B></LEGEND>
             <!-- 
-            printEditArea is the main area for editing text etc. 
+            printEditArea is the main area for editing text etc.
             it can be found in web\CMS\system\doc.php, and web\CMS\system\doc.php:
             -->
-            <?php $doc->printEditArea(); ?>
+            <div style="float: left; border:1px solid black;">
+                <?php $doc->printEditArea(); ?>
+            </div>
+            <div style="float: right; border:1px solid red;">
+                <?php $doc->printLangComparison('dk'); ?>
+            </div>
         </FIELDSET>
     </form>
     <BR>
