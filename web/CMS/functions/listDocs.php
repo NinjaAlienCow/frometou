@@ -56,18 +56,25 @@ function childArray($thisDid){
 			$childArray[$hid]['link'] .= printDocFlags($row['did'],NULL);
 			$childArray[$hid]['link'] .= "</li>\n";
 		}
+		$validChild = 1;
 	}
- 	return $childArray;
+	//returns if $childarray contains data
+	if(isset($validChild)){
+		return $childArray;	 	
+	}
+
 //print_r($childArray);
 }
 
 //printChildArray  selects data to be shown from childArray
 function printChildArray($childArray,$parrent){
 	$childs = "<ul class='childlist'>\n";
-	foreach ($childArray as $value) {
-		if ($value['parent'] == $parrent){
-			$childs .= $value['link'];			
-		} 
+	if(isset($childArray)){
+		foreach ($childArray as $value) {
+			if ($value['parent'] == $parrent){
+				$childs .= $value['link'];			
+			} 
+	  	}
   	}
 	$childs .= "</ul>\n";
 
